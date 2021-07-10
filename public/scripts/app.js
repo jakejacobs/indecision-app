@@ -17,10 +17,26 @@ var onFormSubmit = function onFormSubmit(e) {
   }
 };
 
+var onRemoveAll = function onRemoveAll() {
+  app.options = [];
+  render();
+};
+
+var onMakeDecision = function onMakeDecision() {
+  var randomNum = Math.floor(Math.random() * app.options.length);
+  var option = app.options[randomNum];
+  console.log(option);
+};
+
 var appRoot = document.querySelector('#app');
 
 var render = function render() {
-  var template = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, app.title), app.subtitle && /*#__PURE__*/React.createElement("p", null, app.subtitle), app.options.length > 0 ? 'Here are you options' : 'No options', /*#__PURE__*/React.createElement("ol", null, app.options.map(function (option) {
+  var template = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, app.title), app.subtitle && /*#__PURE__*/React.createElement("p", null, app.subtitle), /*#__PURE__*/React.createElement("p", null, app.options.length > 0 ? 'Here are you options' : 'No options'), /*#__PURE__*/React.createElement("button", {
+    disabled: app.options.length === 0,
+    onClick: onMakeDecision
+  }, "What should I do?"), app.options.length > 0 && /*#__PURE__*/React.createElement("button", {
+    onClick: onRemoveAll
+  }, "Remove All"), /*#__PURE__*/React.createElement("ol", null, app.options.map(function (option) {
     return /*#__PURE__*/React.createElement("li", {
       key: option
     }, option);
