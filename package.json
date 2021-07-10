@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build":"babel src/app.js --watch --out-file public/scripts/app.js"
+    "build": "babel src/app.js --watch --out-file public/scripts/app.js"
   },
   "keywords": [],
   "author": "",
